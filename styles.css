@@ -1,0 +1,85 @@
+/*===========HEADER==========*/
+
+.container{
+}
+.logo{
+    color: white;
+    display: block;
+}
+.svgLogo{
+    fill: currentColor;
+}
+.search{
+    background-color: #24292e;
+    height: 100vh;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+.headLogo{
+    width: 50%
+}
+.search-input{
+    position: absolute;
+}
+input{
+    min-height: 30px;
+    color: #24292e;
+    padding: 0 8px;
+    border: 0;
+    box-shadow: none;
+}
+input[type=submit]{
+    color: #404448;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: white;
+}
+input[type=submit]:hover{
+    color: white;
+    background-color: black;
+}
+#userName{
+    background-color: rgba(255, 255, 255, 0.125);
+    color: white;
+}
+.activeHeadForm{
+    height: auto;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;  
+}
+.activeLogo{
+    width: 32px;
+    margin-right: 15px;
+}
+
+
+@media all and (max-width: 1100px){
+    /*Header*/
+    .search-input{
+        position: static;
+    }
+    .search{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+}
