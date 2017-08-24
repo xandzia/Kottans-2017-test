@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#24292e">
     <title>Kottans Front End 2017</title>
+    <link rel="icon" sizes="192x192" href="icon.png">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="container" id="searchform">
+    <header class="top" id="searchform">
         <div class="search" method="get">
             <label for="userName" class="headLogo">
                 <a href="index.html" class="logo">
@@ -17,14 +19,166 @@
                 </label>
                 <div class="search-input">
                     <input type="text" id="userName" placeholder="Name" name="q">
-                    <input type="submit" value="search" formaction="" class="btn"><!--formaction - где искать //google.com/search -->
+                    <button class="btn btn-searching" type="button" aria-expanded="false" formaction="">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button><!--formaction - где искать //google.com/search -->
+                </div>
+                <div class="filterssorting">
+                    <div class="filters">
+                        <button class="btn btn-filter" type="button" aria-haspopup="true" aria-expanded="false"><span class="btn-span">Filters</span>
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+                        </button>
+                        <div class="filters-menu">
+                            <div class="selected">
+                                <div class="top-menu">
+                                    <span>Select</span>
+                                    <svg aria-label="Close" class="menu-close" height="16" role="img" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+                                </div>
+                                <div class="menu-list">
+                                    <div class="issue">
+                                        <input class="checkboxThree" type="checkbox" id="issue" name="issue" value="issue">
+                                        <label for="issue"><span></span>Has open issue</label>
+                                    </div>
+                                    <div class="topics">
+                                        <input type="checkbox" id="topics" name="topics" value="topics">
+                                        <label for="topics"><span></span>Has topics</label>
+                                    </div>
+                                    <div class="starred">
+                                        <input type="checkbox" id="starred" name="starred" value="starred">
+                                        <label for="starred"><span></span>Has 
+                                        <input type="number" id="otherValue" name="starred" step="1" min="0" max="10000">
+                                        starred</label>
+                                    </div>
+                                    <div class="update">
+                                        <input type="checkbox" id="update" name="update" value="update">
+                                        <label for="update"><span></span>Updated after</label>
+                                        <input type="date" id="date" type="date">
+                                    </div>
+                                    <div class="type">
+                                        <label>Type</label>
+                                        <input type="checkbox" id="all" name="all" value="all">
+                                        <label for="all"><span></span>All</label>
+                                        <input type="checkbox" id="forks" name="forks" value="forks">
+                                        <label for="forks"><span></span>Forks</label>
+                                        <input type="checkbox" id="sources" name="sources" value="sources">
+                                        <label for="sources"><span></span>Sources</label>
+                                    </div>
+                                    <div class="language">
+                                        <label>Language</label>
+                                        <input type="checkbox" id="allLang" name="allLang" value="allLang">
+                                        <label for="allLang"><span></span>All</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sorting">
+                        <button class="btn btn-sorting" type="button" aria-haspopup="true" aria-expanded="false"><span class="btn-span">Sorting</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                        </button>
+                        <div class="sorting-menu">
+                            <div class="selected">
+                                <div class="top-menu">
+                                    <span>Select</span>
+                                    <svg aria-label="Close" class="menu-close" height="16" role="img" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+                                </div>
+                                <div class="menu-list">
+                                    <div class="repo">
+                                        <input type="radio" id="repo" name="sort" value="repo">
+                                        <label for="repo"><span></span>Repo name</label>
+                                    </div>
+                                    <div class="issues-count">
+                                        <input type="radio" id="issues-count" name="sort" value="issues-count">
+                                        <label for="issues-count"><span></span>Open issues count</label>
+                                    </div>
+                                    <div class="stars-count">
+                                        <input type="radio" id="stars-count" name="sort" value="stars-count">
+                                        <label for="stars-count"><span></span>Stars count</label>
+                                    </div>
+                                    <div class="update-date">
+                                        <input type="radio" id="update-date" name="sort" value="update-date">
+                                        <label for="update-date"><span></span>Updated date</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </div>
     </header>
-    <main>
+    <main class="container">
+        <ul class="repo-list">
+            <li id="app" class="card" itemprop="owns" itemscope="" itemtype="http://schema.org/Code">
+                <div class="show-modal" @click="showModal = true">
+                    <div class="repoName">
+                        <h3>zzzzz</h3>
+                        <span class="forkedFrom">hhhhhh</span>
+                    </div>
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupisit amet, consectetur adipisicing elit. Maiores, at.</p>
+                    </div>
+                    <div class="otherDescription">
+                        <span class="colorLang"></span>
+                        <span class="lang">sss</span>
+                        <span class="stars">
+                            <svg class="colorSvg" aria-label="star" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+                        </span>
+                        <span class="forks">
+                            <svg aria-label="fork" class="colorSvg" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+                            2
+                        </span>
+                        <span class="date">Updated
+                            <time datetime="" title="">5 days ago</time>
+                        </span>
+                    </div>
+                </div>
+                <modal v-if="showModal" @close="showModal = false">
+    <!--
+      you can use custom content here to overwrite
+      default content
+    -->
+                    <h3 slot="header">repo name</h3>
+                </modal>        
+            </li>
+        </ul>
     </main>
     <footer></footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="scripts.js"></script>
+<script src="https://use.fontawesome.com/c9a3b4e204.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="scripts.js"></script>
+<!-- template for the modal component -->
+<script type="text/x-template" id="modal-template">
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+
+          <div class="modal-header">
+            <slot name="header">
+              username | contributions (links)
+            </slot>
+          </div>
+
+          <div class="modal-body">
+            <slot name="body">
+              <p class="contributors">username | contributions (links)</p>
+              <p class="language">language | Kb</p>
+            </slot>
+          </div>
+
+          <div class="modal-footer">
+            <slot name="footer">
+              pull request | links
+              <button class="modal-default-button" @click="$emit('close')">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</script>
 </body>
 </html>
