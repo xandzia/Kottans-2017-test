@@ -52,14 +52,14 @@ $(document).mouseup(function (e) {
 //};
 
 // register modal component
-Vue.component('modal', {
-  template: '#modal-template'
-})
+//Vue.component('modal', {
+//  template: '#modal-template'
+//})
 
 // start app
-new Vue({
-  el: '#app',
-  data: {
-    showModal: false
-  }
-});
+//new Vue({
+//  el: '#dialog',
+//  data: {
+//    showModal: false
+//  }
+//});
