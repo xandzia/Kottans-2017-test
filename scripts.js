@@ -1,8 +1,9 @@
-$(".btn").click(function() { 
+$(".btn-searching").click(function() { 
     $(".search").addClass('activeHeadForm');
     $(".search>label").addClass('activeLogo');     
     $(".search-input").css('position', 'relative');     
     $(".filterssorting").css('display', 'flex');     
+    $(".container").css('display', 'block');     
 });
 //выпадающее меню фильтров и сортировки
 $(".btn-filter").click(function() {
@@ -50,16 +51,3 @@ $(document).mouseup(function (e) {
 //    menu1 = menu2;
 //    
 //};
-
-// register modal component
-//Vue.component('modal', {
-//  template: '#modal-template'
-//})
-
-// start app
-//new Vue({
-//  el: '#dialog',
-//  data: {
-//    showModal: false
-//  }
-//});

@@ -114,9 +114,10 @@
             <ul class="repo-list">
                 <li id="dialog" class="card" itemprop="owns" itemscope="" itemtype="http://schema.org/Code" v-for="repo in repos">
                     <div id="show-modal" @click="modalOpen($index)">
-                        <div class="repoName">
+                        <div class="repoName" id="example">
                             <h3>{{repo.name}}</h3>
-                            <span class="forkedFrom">{{repo.forks_url}}</span>
+                            <span class="repoOrFork" v-if="ok:{{repo.private}}">Private</span>
+                            <span class="repoOrFork" v-else="ok:{{repo.fork}}">Fork</span>
                         </div>
                         <div class="description">
                             <p>{{repo.description}}</p>

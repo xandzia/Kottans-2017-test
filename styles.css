@@ -27,6 +27,7 @@ h3{
 .container{
     max-width: 1020px;
     margin: 0 auto;
+    display: none;
 }
 .logo{
     color: white;

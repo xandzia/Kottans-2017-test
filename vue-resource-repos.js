@@ -57,6 +57,7 @@ new Vue({
             }, function (response) {
                 this.loading = false;
                 // error callback
+                
                 this.repos = [];
 
             });
@@ -71,3 +72,4 @@ new Vue({
       
     },
 });
+
