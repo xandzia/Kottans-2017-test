@@ -185,6 +185,7 @@ input{
 }
 
 /*=============STYLE CHECKBOX===========*/
+/*
 input[type="checkbox"],
 input[type="radio"]{
     display:none;
@@ -224,6 +225,7 @@ input[type="radio"]:checked + label span::before {
     position: absolute;
     top: 0;
 }
+*/
 /*==============MAIN CARD=================*/
 .card{
     list-style-type: none;
@@ -303,6 +305,9 @@ time{
     height: 12px;
     border-radius: 50%;
 }
+.otherDescription span:nth-child(2){
+    background: transparent;
+}
 .JavaScript{
   background: #f1e05a;
 }
@@ -338,6 +343,9 @@ time{
 }
 .C#{
     background: #178600;
+}
+.TypeScript{
+    background: #2b7489;
 }
 .null{
     background: rgba(36, 41, 46, 0.3);

@@ -29,7 +29,7 @@ Vue.config.devtools = true; //https://github.com/vuejs/vue-devtools
 Vue.config.debug = true;
 
 
-new Vue({
+var app = new Vue({
     el: '#resourceGetContainer',
     data: {
         active: 0,
@@ -38,6 +38,7 @@ new Vue({
         putUserName: "",
         loading: false,
         HTMLcontent: null,
+        selectedCategory: "All",
     },
     ready: function () {
 //         this.loadRepositories();
@@ -75,7 +76,28 @@ new Vue({
 
             });
         },
-      
+        
+        //алфавитный сорт
+        sort: function () {
+    	   this.repos.sort(this.sortAlphaNum);
+        },
+        
+        sortAlphaNum: function (a,b) {
+    	   var reA = /[^a-zA-Z]/g;
+            var reN = /[^0-9]/g;
+            var aA = a.name.replace(reA, "");
+            var bA = b.name.replace(reA, "");
+            if(aA === bA) {
+                var aN = parseInt(a.name.replace(reN, ""), 10);
+                var bN = parseInt(b.name.replace(reN, ""), 10);
+                return aN === bN ? 0 : aN > bN ? 1 : -1;
+            } else {
+                return aA > bA ? 1 : -1;
+            }
+        },
+        reverse: function () {
+    	   this.repos.reverse();
+        },
     // set active modal and set index wich content is activeted
     modalOpen: function(i) {
         this.showModal = true; 
@@ -84,6 +106,29 @@ new Vue({
   
       
     },
+        //checked
+        computed: {
+		  filteredRepos: function() {
+			var vm = this;
+			var category = vm.selectedCategory;
+			
+			if(category === "All") {
+				return vm.repos;
+			} else {
+				return vm.repos.filter(function(person) {
+                    if(category === "fork"){
+                        return person.fork === true;
+                    }
+                    if(category === "sourse"){
+                        return person.fork === false;
+                    }
+                        return person.language === category;
+ 				});
+        
+            };
+		}
+	},
+    
     filters: {
     moment: function (date) {
       return moment(date).format('ll');

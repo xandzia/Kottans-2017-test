@@ -59,18 +59,17 @@
                                             <input type="date" id="date" type="date">
                                         </div>
                                         <div class="type">
-                                            <label>Type</label>
-                                            <input type="checkbox" id="all" name="all" value="all">
-                                            <label for="all"><span></span>All</label>
-                                            <input type="checkbox" id="forks" name="forks" value="forks">
-                                            <label for="forks"><span></span>Forks</label>
-                                            <input type="checkbox" id="sources" name="sources" value="sources">
-                                            <label for="sources"><span></span>Sources</label>
+                                              <label>Types</label>
+                                           	<label><input type="radio" v-model="selectedCategory" value="fork" /><span></span> Forks</label>
+                                       		<label><input type="radio" v-model="selectedCategory" value="sourse" /><span></span> Sources</label>
+
                                         </div>
                                         <div class="language">
                                             <label>Language</label>
-                                            <input type="checkbox" id="allLang" name="allLang" value="allLang">
-                                            <label for="allLang"><span></span>All</label>
+                                            <label><input type="radio" v-model="selectedCategory" value="All" />
+                                            <span></span> All</label>
+
+                                       		<label v-for="repo in repos"><input type="radio" v-model="selectedCategory" value="{{repo.language}}" /><span></span> {{repo.language}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -84,11 +83,12 @@
                                 <div class="selected">
                                     <div class="top-menu">
                                         <span>Select</span>
+                                        <button @click="reverse">down</button>
                                         <svg aria-label="Close" class="menu-close" height="16" role="img" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
                                     </div>
                                     <div class="menu-list">
                                         <div class="repo">
-                                            <input type="radio" id="repo" name="sort" value="repo">
+                                            <input type="radio" id="repo" name="sort" value="repo" @click="sort">
                                             <label for="repo"><span></span>Repo name</label>
                                         </div>
                                         <div class="issues-count">
@@ -109,11 +109,11 @@
                         </div>
                     </div>
             </div>
-        </header>
+        </header>    
         <main class="container">
             <ul class="repo-list">
                <span class="error" v-html="HTMLcontent"></span>
-                <li id="dialog" class="card" itemprop="owns" itemscope="" itemtype="http://schema.org/Code" v-for="repo in repos">
+                <li id="dialog" class="card" itemprop="owns" itemscope="" itemtype="http://schema.org/Code" v-for="repo in filteredRepos">
                     <div id="show-modal" @click="modalOpen($index)">
                         <div class="repoName">
                             <h3>{{repo.name}}</h3>
@@ -126,7 +126,7 @@
                         </div>
                         <div class="otherDescription">
                             <span class="colorLang {{repo.language}}"></span>
-                            <span>{{repo.language}}</span>
+                            <span class="{{repo.language}}">{{repo.language}}</span>
                             <span class="stars">
                                 <svg class="colorSvg" aria-label="star" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
                                 {{repo.stargazers_count}}
