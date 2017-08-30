@@ -5,6 +5,15 @@ $(".btn-searching").click(function() {
     $(".filterssorting").css('display', 'flex');     
     $(".container").css('display', 'block');     
 });
+//загрузка с ENTER KEY
+$("#userName").keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    $(".btn-searching").click();
+    return false;  
+  }
+});
 //выпадающее меню фильтров и сортировки
 $(".btn-filter").click(function() {
     $(".filters-menu").css('display', 'block');

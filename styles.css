@@ -11,8 +11,8 @@ h3{
 }
 .fa-spin{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 40%;
     color: #3f4448;
 }
 [v-cloak] {
@@ -32,6 +32,7 @@ h3{
 .logo{
     color: white;
     display: block;
+/*    margin: 10%;*/
 }
 .svgLogo{
     fill: currentColor;
@@ -52,7 +53,7 @@ h3{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 10px;
+    padding: 10%;
     position: relative;
 }
 .headLogo{
@@ -90,6 +91,7 @@ input{
     justify-content: flex-start;
     max-width: 1020px;
     margin: 0 auto;
+    padding: 10px;
 }
 .activeLogo{
     width: 32px;
@@ -255,6 +257,11 @@ ul{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+.error{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2em;
+}
 .description p{
     margin-top: 5px;
     font-size: 0.99em;
@@ -273,6 +280,12 @@ ul{
     font-size: 0.89em;
     word-break: break-all;
 }
+time{
+    margin-left: 5px;
+}
+.date{
+    float: right;
+}
 .otherDescription{
     margin-top: auto;
 }
@@ -289,8 +302,47 @@ ul{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: red;
 }
+.JavaScript{
+  background: #f1e05a;
+}
+.HTML{
+  background: #e34c26;
+}
+.CSS{
+  background: #563d7c;
+}
+.PHP{
+  background: #4f5d95; 
+}
+.Python{
+    background: #3572a5;
+}
+.TypeScript{
+    background: #2b7489;
+}
+.Shell{
+    background: #89e051;
+}
+.Ruby{
+    background: #701516;
+}
+.C{
+    background: #555555; 
+}
+.Objective-C{
+    background: #438eff; 
+}
+.Java{
+    background: #b07219;
+}
+.C#{
+    background: #178600;
+}
+.null{
+    background: rgba(36, 41, 46, 0.3);
+}
+
 .colorSvg{
     vertical-align: middle;
     color: #586069;
@@ -299,6 +351,14 @@ ul{
 
 #show-modal{
     padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 .modal-mask {
   position: fixed;
@@ -320,7 +380,7 @@ ul{
 
 .modal-container {
   width: 500px;
-  margin: 0px auto;
+  margin: 20% auto;
   padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
@@ -328,9 +388,7 @@ ul{
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
-    position: absolute;
-    top: 30%;
-    left: 30%
+    position: relative;
 }
 
 .modal-header h3 {
@@ -341,19 +399,19 @@ ul{
 .modal-body {
   margin: 20px 0;
 }
-
-.modal-default-button {
-  float: right;
+.fa-times{
+    color: white;
 }
 
-/*
- * the following styles are auto-applied to elements with
- * v-transition="modal" when their visiblity is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
+.modal-default-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 0;
+    padding: 5px 10px;
+    background: #24292e;
+    cursor: pointer;
+}
 
 .modal-enter, .modal-leave {
   opacity: 0;
@@ -364,7 +422,11 @@ ul{
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
+.repo-item a:visited,
+.repo-item a{
+    color: #42b983;
+    font-size: 1.5em;
+}
 
 /*
 .modal-mask {
@@ -457,6 +519,14 @@ ul{
         flex-direction: row;
         
     }
+    .modal-container{
+        margin: 30% auto;
+    }
+/*
+    .logo{
+        margin: 0;
+    }
+*/
 }
 
 @media all and (max-width: 595px){
@@ -471,8 +541,12 @@ ul{
         -ms-flex-pack: end;
         justify-content: flex-end;
     }
-    .activeLogo{
+    .headLogo.activeLogo{
         margin-right: auto;
+        margin-top: 0;
+    }
+    .headLogo{
+        margin-top: 30%;
     }
     .card{
         width: 100%;
@@ -480,6 +554,9 @@ ul{
     }
     .modal-container{
         width: 90%;
+    }
+        .modal-container{
+        margin: 50% auto;
     }
 }
 

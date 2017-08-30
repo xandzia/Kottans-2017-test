@@ -32,11 +32,12 @@ Vue.config.debug = true;
 new Vue({
     el: '#resourceGetContainer',
     data: {
-          active: 0,
-          showModal: false,
+        active: 0,
+        showModal: false,
         repos: [],
         putUserName: "",
         loading: false,
+        HTMLcontent: null,
     },
     ready: function () {
 //         this.loadRepositories();
@@ -50,13 +51,25 @@ new Vue({
             // GET request
             this.$http.get(url).then(function (response) {
                 this.loading = false;
+                this.HTMLcontent = null;
                 // success callback
                 this.repos = response.data;
 
 
-            }, function (response) {
+            }, function errors (response, status) {
                 this.loading = false;
                 // error callback
+                console.log(response);
+                this.status = response.statusText;
+                console.log(this.status);
+                if ( this.status === "Not Found"){
+                  this.HTMLcontent = `
+                    <div>Can't find, error 404</div>
+                  `;}
+              else{
+                this.HTMLcontent = `
+                    <div>Ops, error. For more information see console</div>
+                  `;};
                 
                 this.repos = [];
 
@@ -71,5 +84,9 @@ new Vue({
   
       
     },
+    filters: {
+    moment: function (date) {
+      return moment(date).format('ll');
+    }
+  }
 });
-
