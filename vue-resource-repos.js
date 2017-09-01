@@ -39,6 +39,11 @@ var app = new Vue({
         loading: false,
         HTMLcontent: null,
         selectedCategory: "All",
+        //для сортировки
+        sortKey : '',
+        reverse : 1, 
+        searchKey : '',
+        columns : ['name','stargazers_count', 'open_issues_count', 'updated_at'],
     },
     ready: function () {
 //         this.loadRepositories();
@@ -77,27 +82,32 @@ var app = new Vue({
             });
         },
         
-        //алфавитный сорт
-        sort: function () {
-    	   this.repos.sort(this.sortAlphaNum);
+        //алфавитный сорт ПЕРВАЯ ВЕРСИЯ
+//        sort: function () {
+//    	   this.repos.sort(this.sortAlphaNum);
+//        },
+//        
+//        sortAlphaNum: function (a,b) {
+//    	   var reA = /[^a-zA-Z]/g;
+//            var reN = /[^0-9]/g;
+//            var aA = a.name.replace(reA, "");
+//            var bA = b.name.replace(reA, "");
+//            if(aA === bA) {
+//                var aN = parseInt(a.name.replace(reN, ""), 10);
+//                var bN = parseInt(b.name.replace(reN, ""), 10);
+//                return aN === bN ? 0 : aN > bN ? 1 : -1;
+//            } else {
+//                return aA > bA ? 1 : -1;
+//            }
+//        },
+//        reverse: function () {
+//    	   this.repos.reverse();
+//        },
+        sortBy : function(sortKey){
+            this.reverse = (this.reverse == -1) ? 1 : -1 ;
+            this.sortKey = sortKey;
         },
         
-        sortAlphaNum: function (a,b) {
-    	   var reA = /[^a-zA-Z]/g;
-            var reN = /[^0-9]/g;
-            var aA = a.name.replace(reA, "");
-            var bA = b.name.replace(reA, "");
-            if(aA === bA) {
-                var aN = parseInt(a.name.replace(reN, ""), 10);
-                var bN = parseInt(b.name.replace(reN, ""), 10);
-                return aN === bN ? 0 : aN > bN ? 1 : -1;
-            } else {
-                return aA > bA ? 1 : -1;
-            }
-        },
-        reverse: function () {
-    	   this.repos.reverse();
-        },
     // set active modal and set index wich content is activeted
     modalOpen: function(i) {
         this.showModal = true; 

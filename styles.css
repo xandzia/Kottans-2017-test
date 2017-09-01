@@ -161,8 +161,34 @@ input{
 .menu-list input{
     min-height: 0;
 }
-.menu-list div{
+.menu-list{
+    display: block;
+    height: 100%;
+}
+.selected{
+    position: relative;
+}
+.menu-list a{
+    display: block;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    color: #404448;
+}
+.menu-list,
+.selected div{
     text-align: left;
+    padding: 10px 20px;
+}
+.selected label,
+.xz div label,
+.filters-menu .selected .menu-list{
+    padding: 0;
+}
+.xz{
+    position: absolute;
+    top: 28px;
+    left: 5px;
 }
 #otherValue,
 #date{
@@ -185,7 +211,6 @@ input{
 }
 
 /*=============STYLE CHECKBOX===========*/
-/*
 input[type="checkbox"],
 input[type="radio"]{
     display:none;
@@ -196,8 +221,8 @@ input[type="radio"]{
     padding: 8px 10px;
     display: block;
 }
-input[type="checkbox"] + label span,
-input[type="radio"] + label span{
+input[type="checkbox"] + span,
+input[type="radio"] + span{
     display:inline-block;
     width:19px;
     height:19px;
@@ -208,16 +233,16 @@ input[type="radio"] + label span{
     background: radial-gradient(#eee, rgba(170, 170, 170, 0.34));
     cursor:pointer;
 }
-input[type="radio"] + label span{
+input[type="radio"] + span{
     border-radius: 10px;
 }
-input[type="checkbox"] + label span::before {
+input[type="checkbox"] + span::before {
   content: "";
   display: block;
 }
  
-input[type="checkbox"]:checked + label span::before ,
-input[type="radio"]:checked + label span::before {
+input[type="checkbox"]:checked + span::before ,
+input[type="radio"]:checked + span::before {
    content: "✓";
    color: #24292e;
    text-align: center;
@@ -225,7 +250,6 @@ input[type="radio"]:checked + label span::before {
     position: absolute;
     top: 0;
 }
-*/
 /*==============MAIN CARD=================*/
 .card{
     list-style-type: none;
