@@ -71,7 +71,7 @@
                                             <label><input type="radio" v-model="selectedCategory" value="All" />
                                             <span></span> All</label>
 
-                                       		<label v-for="repo in repos"><input type="radio" v-model="selectedCategory" value="{{repo.language}}" /><span></span> {{repo.language}}</label>
+                                       		<label v-for="lang in langs"><input type="radio" v-model="selectedCategory" value="{{lang}}" /><span></span> {{lang}}</label>
                                         </div>
                                     </div>
                                 </div>

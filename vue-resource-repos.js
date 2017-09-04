@@ -43,7 +43,8 @@ var app = new Vue({
         sortKey : '',
         reverse : 1, 
         searchKey : '',
-        columns : ['name','stargazers_count', 'open_issues_count', 'updated_at'],
+        columns : ['name', 'open_issues_count','stargazers_count', 'updated_at'],
+        langs: [],
     },
     ready: function () {
 //         this.loadRepositories();
@@ -51,7 +52,7 @@ var app = new Vue({
     methods: {
         loadRepositories: function () {
             var self = this;
-            var url = "https://api.github.com/orgs/"&&"https://api.github.com/users/" + this.putUserName + "/repos";
+            var url = "https://api.github.com/users/" + this.putUserName + "/repos";
 
             this.loading = true;
             // GET request
@@ -60,6 +61,14 @@ var app = new Vue({
                 this.HTMLcontent = null;
                 // success callback
                 this.repos = response.data;
+                
+                //сортировка language, чтобы не повторялись дубликаты для каждого репозитория
+                this.repos.forEach(function(repo, iter){
+                    if (app.langs.indexOf(repo.language) === -1) {
+                        app.langs.push(repo.language)
+                    } 
+  
+                  })
 
 
             }, function errors (response, status) {
